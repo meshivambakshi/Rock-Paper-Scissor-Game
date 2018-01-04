@@ -1,0 +1,52 @@
+import random
+human_score = 0
+computer_score = 0
+
+def choice_to_number(choice):
+    choice_dict = {'rock': 0, 'paper': 1, 'scissor': 2 }
+    return choice_dict[choice]
+
+#def number_to_choice(number):
+    #number_dict = {0: 'rock', 1: 'paper', 2: 'scissor'}
+    #return number_dict[number]
+    
+def random_comp_choice():
+    return random.choice(['rock', 'paper', 'scissor'])
+
+def choice_result(human_choice, computer_choice):
+    global human_score
+    global computer_score
+    
+    
+    human_choice_number = choice_to_number(human_choice)
+    computer_choice_number = choice_to_number(computer_choice)
+    
+    if human_choice_number == computer_choice_number:
+        print('Tie')
+        
+    elif(human_choice_number - computer_choice_number) % 3 == 1:   
+        print('HUMAN(YOU) WINS!!')
+        human_score += 1
+        print('HUMAN earn 1 point:')
+        
+    else:
+        print('COMPUTER WINS!!')
+        computer_score += 1
+        print('COMPUTER earn 1 point:')
+ 
+for i in range(3):
+    human = input('Enter your choice: ')
+    rand = random_comp_choice()
+    print('Computer choice : ' +rand)
+    print(choice_result(human, rand))       
+
+print('')
+
+if human_score == computer_score:
+    print('3 Match series TIES')
+    
+elif human_score > computer_score:
+    print('Human Wins 3 Match Series: ')  
+ 
+else:
+    print('Computer Wins 3 Match Series:')    
